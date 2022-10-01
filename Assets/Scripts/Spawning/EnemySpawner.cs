@@ -10,7 +10,7 @@ public class EnemySpawner : MonoBehaviour
 
 	float spawnDistance = 30f;
 
-	float timeBetweenSpawns = .1f;
+	float timeBetweenSpawns = .5f;
 
 	float nextSpawnTime = 0f;
 
@@ -31,8 +31,6 @@ public class EnemySpawner : MonoBehaviour
 		GameObject spawnObject = pool.GetPooledObject();
 		spawnObject.transform.position = spawnPoint.position;
 
-		//ApproachPlayer movement = spawnObject.GetComponent<ApproachPlayer>();
-		//movement.target = player;
 	}
 
 }

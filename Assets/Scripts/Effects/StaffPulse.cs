@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class StaffPulse : MonoBehaviour
 {
-	float minScale = 1f;
+	float minScale = 0.6f;
 	float maxScale = 15f;
 
 	float currentScale = 1f;
 
 	float currentSpeed = 0f;
-	float speed = 0.375f;
+	float speed = 0.1875f;
 
 	int maxSpeedMultiplier = 4;
 
