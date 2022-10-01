@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-	[SerializeField] ObjectPool pool;
+	[SerializeField] ObjectPoolType objectToSpawn = ObjectPoolType.Enemy;
 	[SerializeField] Transform player;
 	[SerializeField] Transform spawnPoint;
 
 	float spawnDistance = 30f;
 
-	float timeBetweenSpawns = .5f;
+	float timeBetweenSpawns = .1f;
 
 	float nextSpawnTime = 0f;
+
+	ObjectPool pool;
+
+	private void Awake()
+	{
+		ObjectPoolPicker poolPicker = FindObjectOfType<ObjectPoolPicker>();
+		pool = poolPicker.FindPool(objectToSpawn);
+	}
 
 	private void Update()
 	{
@@ -31,6 +39,8 @@ public class EnemySpawner : MonoBehaviour
 		GameObject spawnObject = pool.GetPooledObject();
 		spawnObject.transform.position = spawnPoint.position;
 
+		ApproachPlayer movement = spawnObject.GetComponent<ApproachPlayer>();
+		movement.target = player;
 	}
 
 }
