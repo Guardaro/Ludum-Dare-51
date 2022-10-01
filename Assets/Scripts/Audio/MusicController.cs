@@ -42,6 +42,7 @@ public class MusicController : MonoBehaviour
 			if (isPlaying[i])
 			{
 				audioSource.PlayOneShot(clips[i]);
+				audioSource.clip = clips[i];
 			}
 		}
 	}
