@@ -32,4 +32,9 @@ public class BurstSpawner : MonoBehaviour
 			spawn.transform.Rotate(rotateVector);
 		}
 	}
+
+	public void IncreaseSpawnAmount()
+	{
+		numberToSpawn++;
+	}
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoRotate : MonoBehaviour
 {
-	[SerializeField] float rotateSpeed = 36f;
+	public float rotateSpeed = 36f;
 
 	private void Update()
 	{

@@ -14,7 +14,14 @@ public class BulletPool : MonoBehaviour
 
 	int currentIndex = 0;
 
-	public float damageAmount = 10f;
+	float damageAmount = 10f;
+	float damageMultiplier = 1.185f;
+
+	float sineRotationAmplitude = 0f;
+	float sineAmplitudeIncrement = 11.25f;
+
+	float stunAmount = 0f;
+	float stunIncrement = 0.25f;
 
 	private void Awake()
 	{
@@ -31,6 +38,7 @@ public class BulletPool : MonoBehaviour
 			pooledObjects[i].transform.parent = transform;
 			Bullet bullet = pooledObjects[i].GetComponent<Bullet>();
 			bullet.SetDamage(damageAmount);
+			bullet.SetSineRotationAmplitude(sineRotationAmplitude);
 			PoolObject poolObject = pooledObjects[i].GetComponent<PoolObject>();
 			if (poolObject != null)
 			{
@@ -92,6 +100,7 @@ public class BulletPool : MonoBehaviour
 			objectsToPool[i].transform.parent = transform;
 			Bullet bullet = objectsToPool[i].GetComponent<Bullet>();
 			bullet.SetDamage(damageAmount);
+			bullet.SetSineRotationAmplitude(sineRotationAmplitude);
 			objectsToPool[i].SetActive(false);
 			PoolObject poolObject = objectsToPool[i].GetComponent<PoolObject>();
 			if (poolObject != null)
@@ -103,9 +112,9 @@ public class BulletPool : MonoBehaviour
 		poolSize = pooledObjects.Length;
 	}
 
-	public void SetDamageAmount(float newDamageAmount)
+	public void IncreaseDamage()
 	{
-		damageAmount = newDamageAmount;
+		damageAmount *= damageMultiplier;
 		for(int i = 0; i < pooledObjects.Length; i++)
 		{
 			Bullet currentBullet = pooledObjects[i].GetComponent<Bullet>();
@@ -113,8 +122,33 @@ public class BulletPool : MonoBehaviour
 		}
 	}
 
-	public void DebugSetDamage()
+	public void HalveDamage()
 	{
-		SetDamageAmount(30);
+		damageAmount *= 0.5f;
+		for (int i = 0; i < pooledObjects.Length; i++)
+		{
+			Bullet currentBullet = pooledObjects[i].GetComponent<Bullet>();
+			currentBullet.SetDamage(damageAmount);
+		}
+	}
+
+	public void IncreaseSineRotation()
+	{
+		sineRotationAmplitude += sineAmplitudeIncrement;
+		for (int i = 0; i < pooledObjects.Length; i++)
+		{
+			Bullet currentBullet = pooledObjects[i].GetComponent<Bullet>();
+			currentBullet.SetSineRotationAmplitude(sineRotationAmplitude);
+		}
+	}
+
+	public void IncreaseStun()
+	{
+		stunAmount += stunIncrement;
+		for (int i = 0; i < pooledObjects.Length; i++)
+		{
+			Bullet currentBullet = pooledObjects[i].GetComponent<Bullet>();
+			currentBullet.SetStun(stunAmount);
+		}
 	}
 }

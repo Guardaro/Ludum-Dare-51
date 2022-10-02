@@ -4,16 +4,35 @@ using UnityEngine;
 
 public class CardMenu : MonoBehaviour
 {
+	[SerializeField] Card[] cards;
 	[SerializeField] GameObject[] masks;
 	[SerializeField] GameObject selectEffect;
+
+	[SerializeField] Upgrade[] upgrades;
+
+	Upgrade[] cardUpgrades;
 
 	int currentMenuPosition = 0;
 	
 	int numberOfMenuItems;
 
+	BulletPool bulletPool;
+	[SerializeField] BurstSpawner forwardGun;
+	[SerializeField] BurstSpawner leftGun;
+	[SerializeField] BurstSpawner rightGun;
+	[SerializeField] BurstSpawner rearGun;
+	[SerializeField] BurstSpawner glissandoGun;
+
+	GameController gameController;
+
 	private void Awake()
 	{
 		numberOfMenuItems = masks.Length;
+		cardUpgrades = new Upgrade[cards.Length];
+		AssignRandomUpgrades();
+
+		bulletPool = FindObjectOfType<BulletPool>();
+		gameController = FindObjectOfType<GameController>();
 	}
 
 	private void Update()
@@ -55,5 +74,60 @@ public class CardMenu : MonoBehaviour
 	{
 		selectEffect.transform.position = masks[currentMenuPosition].transform.position;
 		selectEffect.SetActive(true);
+		ApplyUpgrade();
+		AssignRandomUpgrades();
+	}
+
+	private void AssignRandomUpgrades()
+	{
+		for(int i = 0; i < cards.Length; i++)
+		{
+			int randomIndex = Random.Range(0, upgrades.Length);
+			cardUpgrades[i] = upgrades[randomIndex];
+			cards[i].RefreshDisplay(upgrades[randomIndex]);
+		}
+	}
+
+	private void ApplyUpgrade()
+	{
+		UpgradeType upgradeType = cardUpgrades[currentMenuPosition].GetUpgradeType();
+		switch (upgradeType)
+		{
+			case UpgradeType.Crescendo:
+				bulletPool.IncreaseDamage();
+				break;
+			case UpgradeType.Acciaccatura:
+				forwardGun.IncreaseSpawnAmount();
+				break;
+			case UpgradeType.OttavaAlta:
+				leftGun.IncreaseSpawnAmount();
+				break;
+			case UpgradeType.OttavaBassa:
+				rightGun.IncreaseSpawnAmount();
+				break;
+			case UpgradeType.Glissando:
+				glissandoGun.IncreaseSpawnAmount();
+				break;
+			case UpgradeType.AllaBreve:
+				gameController.IncreaseTempo();
+				break;
+			case UpgradeType.Vibrato:
+				bulletPool.IncreaseSineRotation();
+				break;
+			case UpgradeType.Arpeggio:
+				//Rotating Bullets
+				break;
+			case UpgradeType.Fermata:
+				bulletPool.IncreaseStun();
+				break;
+			case UpgradeType.Segno:
+				rearGun.IncreaseSpawnAmount();
+				break;
+			case UpgradeType.Tremolo:
+				gameController.DoubleTempo();
+				bulletPool.HalveDamage();
+				break;
+		}
+
 	}
 }

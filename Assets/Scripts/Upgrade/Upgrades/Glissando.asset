@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273f780f2c78b0147b20813bafd6cb7d, type: 3}
   m_Name: Glissando
   m_EditorClassIdentifier: 
-  upgradeType: 0
-  title: 
-  symbol: 
-  description: 
+  upgradeType: 5
+  title: Glissando
+  symbol: "\U0001D1B1"
+  description: Extra rotating projectile

@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 8552573276552780142}
   - component: {fileID: 1712743965875980686}
   - component: {fileID: 2244586684105252661}
+  - component: {fileID: 3782791238049323565}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -222,6 +223,7 @@ MonoBehaviour:
   behaviorsToDisable:
   - {fileID: 7201157113817164765}
   - {fileID: 1712743965875980686}
+  - {fileID: 3782791238049323565}
   objectsToDisable: []
   collidersToDisable: []
 --- !u!114 &1712743965875980686
@@ -240,6 +242,7 @@ MonoBehaviour:
   damageAmount: 20
   disableOnHit: 1
   reportCollisionsAfterFirst: 0
+  stunAmount: 0
 --- !u!114 &2244586684105252661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,3 +257,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: {fileID: 1712743965875980686}
   movement: {fileID: 7201157113817164765}
+  rotation: {fileID: 3782791238049323565}
+--- !u!114 &3782791238049323565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7201157113817164764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad876cb052b207442a1cdfa9609dff0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amplitude: 0
+  period: 0.5
+  phaseShift: 0

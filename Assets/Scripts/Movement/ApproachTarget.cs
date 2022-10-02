@@ -8,9 +8,34 @@ public class ApproachTarget : MonoBehaviour
 
 	public Transform target = null;
 
+	bool stunned = false;
+	float stunUntil = -Mathf.Infinity;
+
 	private void Update()
 	{
-		Vector3 difference = target.position - transform.position;
-		transform.position += difference.normalized * moveSpeed * Time.deltaTime;
+		if (stunned)
+		{
+			if (Time.time > stunUntil) stunned = false;
+		}
+		else
+		{
+			Vector3 difference = target.position - transform.position;
+			transform.position += difference.normalized * moveSpeed * Time.deltaTime;
+		}
+	}
+
+	public void Stun(float stunAmount)
+	{
+		if (!stunned)
+		{
+			stunned = true;
+			stunUntil = Time.time;
+		}
+		stunUntil += stunAmount;
+	}
+
+	private void OnEnable()
+	{
+		stunned = false;		
 	}
 }

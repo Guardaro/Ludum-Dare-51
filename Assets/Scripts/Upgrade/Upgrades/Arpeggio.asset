@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273f780f2c78b0147b20813bafd6cb7d, type: 3}
   m_Name: Arpeggio
   m_EditorClassIdentifier: 
-  upgradeType: 0
-  title: 
-  symbol: 
-  description: 
+  upgradeType: 6
+  title: Arpeggio
+  symbol: "\U0001D183"
+  description: Adds rotation to projectiles

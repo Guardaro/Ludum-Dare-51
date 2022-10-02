@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tremolo
   m_EditorClassIdentifier: 
   upgradeType: 8
-  title: Melisma
-  symbol: "\U0001D175"
+  title: Tremolo
+  symbol: "\U0001D16B"
   description: Faster fire rate; weaker projectiles

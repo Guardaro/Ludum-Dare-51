@@ -18,6 +18,12 @@ public class GameController : MonoBehaviour
 	float nextFireTime = 0f;
 	public float tempo = 8f;
 
+	public float enemyHP = 12f;
+	float enemyHPMultiplier = 1.06f;
+
+	float enemySpawnRate = 4f;
+	float enemySpawnRateMultiplier = 0.94f;
+
 	private void Awake()
 	{
 		Cursor.visible = false;
@@ -64,5 +70,15 @@ public class GameController : MonoBehaviour
 		{
 			guns[i].Spawn();
 		}
+	}
+
+	public void IncreaseTempo()
+	{
+		tempo *= 1.1f;
+	}
+
+	public void DoubleTempo()
+	{
+		tempo *= 2f;
 	}
 }

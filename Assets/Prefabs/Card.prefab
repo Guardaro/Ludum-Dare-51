@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2572273162228072920}
   - component: {fileID: 7235848483444311697}
-  - component: {fileID: 1858243374710817933}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -53,31 +52,6 @@ MonoBehaviour:
   title: {fileID: 2572273163194939065}
   symbol: {fileID: 2572273162660900773}
   description: {fileID: 2572273163860057550}
---- !u!114 &1858243374710817933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2572273162228072921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 715243eda969de84392713b5a3b7cafa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgrades:
-  - {fileID: 11400000, guid: 5f590d1c17308d44c910833050d57097, type: 2}
-  - {fileID: 11400000, guid: 929e12921e5d78a48b839c8c64e8665d, type: 2}
-  - {fileID: 11400000, guid: 25f0c246215e2b34ca9c0346ce2d7d3b, type: 2}
-  - {fileID: 11400000, guid: ffa7872a946225841802827304e6ea55, type: 2}
-  - {fileID: 11400000, guid: 4253fa9210f12bf4082e2b9562614cd3, type: 2}
-  - {fileID: 11400000, guid: 2a1ad9aaf6aacee409fad3b0115977d1, type: 2}
-  - {fileID: 11400000, guid: 9cbd5ad8d156d5c4fb39976bd39bed26, type: 2}
-  - {fileID: 11400000, guid: a0e0880b30d98ee4c9a5f86bfdce2899, type: 2}
-  - {fileID: 11400000, guid: 50da94fc4f92a8147b19ee3b02e74a32, type: 2}
-  - {fileID: 11400000, guid: 1ce464f0a955f75479819b1cd37af394, type: 2}
-  - {fileID: 11400000, guid: 4ecd327f46c5c64458446785de7b0475, type: 2}
-  card: {fileID: 7235848483444311697}
 --- !u!1 &2572273162660900775
 GameObject:
   m_ObjectHideFlags: 0
