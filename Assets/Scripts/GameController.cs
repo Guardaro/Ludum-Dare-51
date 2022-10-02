@@ -25,9 +25,11 @@ public class GameController : MonoBehaviour
 	float enemySpawnTime = 4f;
 	float enemySpawnTimeMultiplier = 0.9f;
 
+	bool gameHasEnded = false;
+
 	private void Awake()
 	{
-		Cursor.visible = false;
+		//Cursor.visible = false;
 
 		musicController = FindObjectOfType<MusicController>();
 		staffSpinner = FindObjectOfType<StaffSpinner>();
@@ -40,15 +42,18 @@ public class GameController : MonoBehaviour
 
 	private void Update()
 	{
-		if(Time.time > nextRefreshTime)
+		if (Time.time > nextRefreshTime)
 		{
 			nextRefreshTime += interval;
 			NextInterval();
 		}
-		if(Time.time >= nextFireTime)
+		if (!gameHasEnded)
 		{
-			Fire();
-			nextFireTime += interval / tempo;
+			if (Time.time >= nextFireTime)
+			{
+				Fire();
+				nextFireTime += interval / tempo;
+			}
 		}
 	}
 
@@ -63,8 +68,12 @@ public class GameController : MonoBehaviour
 		musicController.PlayNextClipSet();
 		staffSpinner.RandomSpin();
 		staffPulse.RandomSpeed();
-		cardMenu.Select();
-		IncreaseDifficulty();
+
+		if (!gameHasEnded)
+		{
+			cardMenu.Select();
+			IncreaseDifficulty();
+		}
 	}
 
 	private void Fire()
@@ -90,5 +99,10 @@ public class GameController : MonoBehaviour
 		enemyHP *= enemyHPMultiplier;
 		enemySpawnTime *= enemySpawnTimeMultiplier;
 		enemySpawner.timeBetweenSpawns = enemySpawnTime;
+	}
+
+	public void EndGame()
+	{
+		gameHasEnded = true;
 	}
 }

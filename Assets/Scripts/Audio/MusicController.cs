@@ -23,7 +23,7 @@ public class MusicController : MonoBehaviour
 
 	private void SelectClips()
 	{
-		if(NumberOfClipsPlaying() <= 1)
+		if(NumberOfClipsPlaying() <= 3)
 		{
 			int clipToPlay = Random.Range(0, clips.Length);
 			isPlaying[clipToPlay] = true;

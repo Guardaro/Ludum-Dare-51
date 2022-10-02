@@ -7,7 +7,7 @@ public class StaffPulse : MonoBehaviour
 	float minScale = 0.6f;
 	float maxScale = 6f;
 
-	float currentScale = 1f;
+	float currentScale = 0.6f;
 
 	float currentSpeed = 0f;
 	float speed = 0.1875f;
