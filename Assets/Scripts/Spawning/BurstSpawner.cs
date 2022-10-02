@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class BurstSpawner : MonoBehaviour
 {
-	[SerializeField] ObjectPoolType objectToSpawn;
 	[SerializeField] int numberToSpawn;
 	[SerializeField] float angleBetween = 15f;
 
-	ObjectPool pool;
-
-	private void Awake()
-	{
-		ObjectPoolPicker picker = FindObjectOfType<ObjectPoolPicker>();
-		pool = picker.FindPool(objectToSpawn);
-	}
+	[SerializeField] BulletPool pool;
 
 	public void Spawn()
 	{
@@ -22,8 +15,18 @@ public class BurstSpawner : MonoBehaviour
 		for(int i = 0; i < numberToSpawn; i++)
 		{
 			GameObject spawn = pool.GetPooledObject();
+			PoolObject poolObject = spawn.GetComponent<PoolObject>();
+			if(poolObject != null)
+			{
+				poolObject.Disable();
+			}
 			spawn.transform.position = transform.position;
 			spawn.transform.rotation = transform.rotation;
+			if (poolObject != null)
+			{
+				poolObject.Enable();
+			}
+
 			Vector3 rotateVector = Vector3.zero;
 			rotateVector.z = startingAngle + angleBetween * i;
 			spawn.transform.Rotate(rotateVector);

@@ -8,9 +8,7 @@ public class EnemySpawner : MonoBehaviour
 	[SerializeField] Transform player;
 	[SerializeField] Transform spawnPoint;
 
-	float spawnDistance = 30f;
-
-	float timeBetweenSpawns = .1f;
+	public float timeBetweenSpawns = 10f;
 
 	float nextSpawnTime = 0f;
 
@@ -36,10 +34,14 @@ public class EnemySpawner : MonoBehaviour
 		float randomRotation = Random.Range(0, 360f);
 		transform.Rotate(new Vector3(0, 0, randomRotation));
 
-		GameObject spawnObject = pool.GetPooledObject();
-		spawnObject.transform.position = spawnPoint.position;
 
-		ApproachPlayer movement = spawnObject.GetComponent<ApproachPlayer>();
+		GameObject spawnObject = pool.GetPooledObject();
+		PoolObject poolObject = spawnObject.GetComponent<PoolObject>();
+		poolObject.Disable();
+		spawnObject.transform.position = spawnPoint.position;
+		poolObject.Enable();
+
+		ApproachTarget movement = spawnObject.GetComponent<ApproachTarget>();
 		movement.target = player;
 	}
 

@@ -14,7 +14,8 @@ public class Health : MonoBehaviour
 	private void Awake()
 	{
 		RefillHealth();
-//		explosionPool = picker.FindPool(ObjectPoolType.Explosion1);
+		ObjectPoolPicker picker = FindObjectOfType<ObjectPoolPicker>();
+		explosionPool = picker.FindPool(ObjectPoolType.Explosion);
 	}
 
 	private void OnEnable()

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApproachPlayer : MonoBehaviour
+public class ApproachTarget : MonoBehaviour
 {
 	public float moveSpeed = 2f;
 

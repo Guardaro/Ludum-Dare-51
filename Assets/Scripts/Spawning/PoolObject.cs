@@ -7,6 +7,7 @@ public class PoolObject : MonoBehaviour
 	[SerializeField] TrailRenderer[] trailRenderers;
 	[SerializeField] MonoBehaviour[] behaviorsToDisable;
 	[SerializeField] GameObject[] objectsToDisable;
+	[SerializeField] Collider2D[] collidersToDisable;
 
 	public void Disable()
 	{
@@ -25,6 +26,11 @@ public class PoolObject : MonoBehaviour
 		{
 			objectsToDisable[i].SetActive(false);
 		}
+
+		for(int i = 0; i < collidersToDisable.Length; i++)
+		{
+			collidersToDisable[i].enabled = false;
+		}
 	}
 
 	public void Enable()
@@ -42,6 +48,11 @@ public class PoolObject : MonoBehaviour
 		for (int i = 0; i < objectsToDisable.Length; i++)
 		{
 			objectsToDisable[i].SetActive(true);
+		}
+
+		for (int i = 0; i < collidersToDisable.Length; i++)
+		{
+			collidersToDisable[i].enabled = true;
 		}
 	}
 }

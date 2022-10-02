@@ -5,7 +5,7 @@ using UnityEngine;
 public class StaffPulse : MonoBehaviour
 {
 	float minScale = 0.6f;
-	float maxScale = 15f;
+	float maxScale = 6f;
 
 	float currentScale = 1f;
 
@@ -19,8 +19,6 @@ public class StaffPulse : MonoBehaviour
 		currentScale += currentSpeed * Time.deltaTime;
 		currentScale = Mathf.Clamp(currentScale, minScale, maxScale);
 		transform.localScale = Vector3.one * currentScale;
-		print(currentSpeed);
-		print(currentScale);
 	}
 
 	public void RandomSpeed()

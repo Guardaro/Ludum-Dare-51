@@ -46,7 +46,12 @@ public class ObjectPool : MonoBehaviour
 		for (int i = 0; i < poolSize; i++)
 		{
 			pooledObjects[i] = Instantiate(prefab);
+			pooledObjects[i].transform.parent = transform;
 			PoolObject poolObject = pooledObjects[i].GetComponent<PoolObject>();
+			if (poolObject != null)
+			{
+				poolObject.Disable();
+			}
 			pooledObjects[i].SetActive(false);
 		}
 	}
@@ -100,7 +105,13 @@ public class ObjectPool : MonoBehaviour
 		for (int i = 0; i < growPoolBy; i++)
 		{
 			objectsToPool[i] = Instantiate(prefab);
+			objectsToPool[i].transform.parent = transform;
 			objectsToPool[i].SetActive(false);
+			PoolObject poolObject = objectsToPool[i].GetComponent<PoolObject>();
+			if(poolObject != null)
+			{
+				poolObject.Disable();
+			}
 		}
 
 		pooledObjects = pooledObjects.Concat(objectsToPool).ToArray();

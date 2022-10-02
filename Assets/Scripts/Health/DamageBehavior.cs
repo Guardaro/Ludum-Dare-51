@@ -24,8 +24,8 @@ public class DamageBehavior : MonoBehaviour
 	{
 		if (damagePool == null)
 		{
-//			ObjectPoolPicker picker = FindObjectOfType<ObjectPoolPicker>();
-//			damagePool = picker.FindPool(ObjectPoolType.DamageIndicator);
+			ObjectPoolPicker picker = FindObjectOfType<ObjectPoolPicker>();
+			damagePool = picker.FindPool(ObjectPoolType.DamageIndicator);
 		}
 	}
 }
