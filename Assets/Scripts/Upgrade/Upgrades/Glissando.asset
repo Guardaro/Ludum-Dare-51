@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 5
   title: Glissando
   symbol: "\U0001D1B1"
-  description: Extra rotating projectile
+  description: +1 turret projectile

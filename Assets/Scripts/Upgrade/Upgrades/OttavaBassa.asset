@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 10
   title: Ottava Bassa
   symbol: "\U0001D137"
-  description: Extra projectile to right
+  description: +1 right projectile

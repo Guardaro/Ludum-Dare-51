@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 9
   title: Ottava Alta
   symbol: "\U0001D136"
-  description: Extra projectile to left
+  description: +1 left projectile

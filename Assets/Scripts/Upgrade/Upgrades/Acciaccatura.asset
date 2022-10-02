@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 1
   title: Acciaccatura
   symbol: "\U0001D194"
-  description: Extra projectile ahead
+  description: +1 forward projectile

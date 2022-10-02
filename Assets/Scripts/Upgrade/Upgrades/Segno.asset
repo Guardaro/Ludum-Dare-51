@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 0
   title: Segno
   symbol: "\U0001D10B"
-  description: Extra projectile behind
+  description: +1 rear projectile

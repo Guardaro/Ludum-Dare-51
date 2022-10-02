@@ -25,6 +25,8 @@ public class CardMenu : MonoBehaviour
 
 	GameController gameController;
 
+	IconDisplay iconDisplay;
+
 	private void Awake()
 	{
 		numberOfMenuItems = masks.Length;
@@ -33,6 +35,7 @@ public class CardMenu : MonoBehaviour
 
 		bulletPool = FindObjectOfType<BulletPool>();
 		gameController = FindObjectOfType<GameController>();
+		iconDisplay = FindObjectOfType<IconDisplay>();
 	}
 
 	private void Update()
@@ -75,7 +78,13 @@ public class CardMenu : MonoBehaviour
 		selectEffect.transform.position = masks[currentMenuPosition].transform.position;
 		selectEffect.SetActive(true);
 		ApplyUpgrade();
+		RefreshIconDisplay();
 		AssignRandomUpgrades();
+	}
+
+	private void RefreshIconDisplay()
+	{
+		iconDisplay.SetIcon(cardUpgrades[currentMenuPosition]);
 	}
 
 	private void AssignRandomUpgrades()

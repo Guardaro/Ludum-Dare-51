@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 7
   title: Vibrato
   symbol: "\U0001D19C\U0001D19C\U0001D19C"
-  description: Randomizes projectile movement
+  description: Serpentine movement

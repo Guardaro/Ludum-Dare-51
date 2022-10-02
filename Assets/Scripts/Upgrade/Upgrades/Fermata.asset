@@ -15,4 +15,4 @@ MonoBehaviour:
   upgradeType: 4
   title: Fermata
   symbol: "\U0001D110"
-  description: Projectiles stun on contact
+  description: Increased stun duration

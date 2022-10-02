@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
 	[SerializeField] float health;
 	[SerializeField] float maxHealth;
+	[SerializeField] NoteHealthDisplay healthDisplay;
 
 	[SerializeField] DamageBehavior damageBehavior;
 
@@ -34,6 +35,10 @@ public class Health : MonoBehaviour
 	{
 		health -= damageAmount;
 		damageBehavior.TakeDamage(damageAmount);
+		if (healthDisplay)
+		{
+			healthDisplay.RefreshDisplay(health);
+		}
 		if(health <= 0)
 		{
 			Die();
@@ -45,8 +50,17 @@ public class Health : MonoBehaviour
 		return health / maxHealth;
 	}
 
-	private void RefillHealth()
+	public void RefillHealth()
 	{
 		health = maxHealth;
+		if (healthDisplay)
+		{
+			healthDisplay.RefreshDisplay(health);
+		}
+	}
+
+	public void SetMaxHealth(float newMax)
+	{
+		maxHealth = newMax;
 	}
 }

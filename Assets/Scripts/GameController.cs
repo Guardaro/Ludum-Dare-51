@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 	StaffSpinner staffSpinner;
 	StaffPulse staffPulse;
 	CardMenu cardMenu;
+	EnemySpawner enemySpawner;
 
 	[SerializeField] BurstSpawner[] guns;
 
@@ -19,10 +20,10 @@ public class GameController : MonoBehaviour
 	public float tempo = 8f;
 
 	public float enemyHP = 12f;
-	float enemyHPMultiplier = 1.06f;
+	float enemyHPMultiplier = 1.055f;
 
-	float enemySpawnRate = 4f;
-	float enemySpawnRateMultiplier = 0.94f;
+	float enemySpawnTime = 4f;
+	float enemySpawnTimeMultiplier = 0.9f;
 
 	private void Awake()
 	{
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
 		staffSpinner = FindObjectOfType<StaffSpinner>();
 		staffPulse = FindObjectOfType<StaffPulse>();
 		cardMenu = FindObjectOfType<CardMenu>();
+		enemySpawner = FindObjectOfType<EnemySpawner>();
 
 		Initialize();
 	}
@@ -62,6 +64,7 @@ public class GameController : MonoBehaviour
 		staffSpinner.RandomSpin();
 		staffPulse.RandomSpeed();
 		cardMenu.Select();
+		IncreaseDifficulty();
 	}
 
 	private void Fire()
@@ -80,5 +83,12 @@ public class GameController : MonoBehaviour
 	public void DoubleTempo()
 	{
 		tempo *= 2f;
+	}
+
+	private void IncreaseDifficulty()
+	{
+		enemyHP *= enemyHPMultiplier;
+		enemySpawnTime *= enemySpawnTimeMultiplier;
+		enemySpawner.timeBetweenSpawns = enemySpawnTime;
 	}
 }
